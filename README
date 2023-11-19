@@ -1,51 +1,57 @@
-Pizza Delivery Platform
+# Pizza Delivery Platform
+
 This repository contains the source code for a Pizza Delivery Platform, which consists of three microservices:
 
-User Service: Manages user information and order history.
-Restaurant Service: Handles restaurant details, menus, and online status.
-Delivery Service: Tracks the status of pizza deliveries.
+- **User Service:** Manages user information and order history.
+- **Restaurant Service:** Handles restaurant details, menus, and online status.
+- **Delivery Service:** Tracks the status of pizza deliveries.
+
 The microservices communicate with each other using RabbitMQ for message queuing.
 
-Table of Contents
-Prerequisites
-Getting Started
-Setting up MongoDB
-Setting up RabbitMQ
-Running the Microservices
-API Documentation
-Testing
-Deployment
-Contributing
-License
-Prerequisites
+## Table of Contents
+1. [Prerequisites](#prerequisites)
+2. [Getting Started](#getting-started)
+   - [Setting up MongoDB](#setting-up-mongodb)
+   - [Setting up RabbitMQ](#setting-up-rabbitmq)
+   - [Running the Microservices](#running-the-microservices)
+3. [API Documentation](#api-documentation)
+   - [Restaurant Service](#restaurant-service-api-documentation)
+   - [User Service](#user-service-api-documentation)
+4. [Testing](#testing)
+5. [Deployment](#deployment)
+6. [Contributing](#contributing)
+7. [License](#license)
+
+## Prerequisites
 Before you begin, ensure you have the following installed:
+- Node.js
+- Docker
+- MongoDB
+- RabbitMQ
 
-Node.js
-Docker
-MongoDB
-RabbitMQ
-Getting Started
-Setting up MongoDB
-Install MongoDB on your local machine or use a cloud-based MongoDB service.
-Update the MongoDB connection strings in the index.js files of each microservice (e.g., UserService, RestaurantService, DeliveryService).
-Setting up RabbitMQ
-Install RabbitMQ on your local machine or use a cloud-based RabbitMQ service.
-Update the RabbitMQ connection strings in the index.js files of each microservice.
-Running the Microservices
-Clone this repository:
+## Getting Started
 
+### Setting up MongoDB
+1. Install MongoDB on your local machine or use a cloud-based MongoDB service.
+2. Update the MongoDB connection strings in the `index.js` files of each microservice (e.g., UserService, RestaurantService, DeliveryService).
+
+### Setting up RabbitMQ
+1. Install RabbitMQ on your local machine or use a cloud-based RabbitMQ service.
+2. Update the RabbitMQ connection strings in the `index.js` files of each microservice.
+
+### Running the Microservices
+1. Clone this repository:
+   ```bash
+   git clone <repository-url>
+   cd pizza-delivery-platform
+
+
+Navigate to each microservice directory (e.g., user_service, restaurant_service, delivery_service) and install dependencies:
 bash
 Copy code
-git clone <repository-url>
-cd pizza-delivery-platform
-Navigate to each microservice directory (e.g., UserService, RestaurantService, DeliveryService) and install dependencies:
-
-bash
-Copy code
-cd UserService
+cd user_service
 npm install
 Build and run each microservice using Docker:
-
 bash
 Copy code
 docker-compose up --build
