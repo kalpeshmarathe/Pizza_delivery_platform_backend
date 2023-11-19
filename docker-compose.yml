@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  userservice:
+    build:
+      context: user_service
+    ports:
+      - "9090:9090"
+    depends_on:
+      - rabbitmq
+
+  delivery_service:
+    build:
+      context: delivery_service
+    ports:
+      - "1010:1010"
+    depends_on:
+      - rabbitmq
+    environment:
+      - AMQP_SERVER=rabbitmq
+
+  restaurentservice:
+    build:
+      context: restaurant_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: "rabbitmq:management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"

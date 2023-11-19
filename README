@@ -1,0 +1,326 @@
+Pizza Delivery Platform
+This repository contains the source code for a Pizza Delivery Platform, which consists of three microservices:
+
+User Service: Manages user information and order history.
+Restaurant Service: Handles restaurant details, menus, and online status.
+Delivery Service: Tracks the status of pizza deliveries.
+The microservices communicate with each other using RabbitMQ for message queuing.
+
+Table of Contents
+Prerequisites
+Getting Started
+Setting up MongoDB
+Setting up RabbitMQ
+Running the Microservices
+API Documentation
+Testing
+Deployment
+Contributing
+License
+Prerequisites
+Before you begin, ensure you have the following installed:
+
+Node.js
+Docker
+MongoDB
+RabbitMQ
+Getting Started
+Setting up MongoDB
+Install MongoDB on your local machine or use a cloud-based MongoDB service.
+Update the MongoDB connection strings in the index.js files of each microservice (e.g., UserService, RestaurantService, DeliveryService).
+Setting up RabbitMQ
+Install RabbitMQ on your local machine or use a cloud-based RabbitMQ service.
+Update the RabbitMQ connection strings in the index.js files of each microservice.
+Running the Microservices
+Clone this repository:
+
+bash
+Copy code
+git clone <repository-url>
+cd pizza-delivery-platform
+Navigate to each microservice directory (e.g., UserService, RestaurantService, DeliveryService) and install dependencies:
+
+bash
+Copy code
+cd UserService
+npm install
+Build and run each microservice using Docker:
+
+bash
+Copy code
+docker-compose up --build
+The microservices should now be running. Access each service through the specified ports (e.g., User Service: http://localhost:9090, Restaurant Service: http://localhost:8080, Delivery Service: http://localhost:1010).
+
+
+
+Restaurant Service API Documentation
+Base URL
+arduino
+Copy code
+http://localhost:8080
+Get Restaurants
+Endpoint: GET /restaurants/:city?
+Description: Retrieve a list of restaurants. Optionally, filter by city.
+Request Params:
+city (Optional): The city to filter the restaurants.
+Example:
+Request:
+http
+Copy code
+GET /restaurants/NewYork
+Response:
+json
+Copy code
+{
+  "restaurants": [
+    {
+      "name": "Pizza Place",
+      "city": "NewYork",
+      "menu": [
+        {
+          "name": "Margherita",
+          "price": 12
+        }
+      ]
+    }
+  ]
+}
+Add Menu Item
+Endpoint: POST /restaurent/menu/addItem
+Description: Add a new item to a restaurant's menu.
+Request Body:
+json
+Copy code
+{
+  "restaurantname": "string",
+  "name": "string",
+  "price": 15
+}
+Example:
+Request:
+http
+Copy code
+POST /restaurent/menu/addItem
+Content-Type: application/json
+
+{
+  "restaurantname": "Pizza Place",
+  "name": "Pepperoni",
+  "price": 15
+}
+Response:
+json
+Copy code
+{
+  "message": "Menu item added successfully",
+  "restaurant": {
+    "name": "Pizza Place",
+    "menu": [
+      {
+        "name": "Margherita",
+        "price": 12
+      },
+      {
+        "name": "Pepperoni",
+        "price": 15
+      }
+    ]
+  }
+}
+Update Menu Item
+Endpoint: PUT /menu/update-item/:itemId
+Description: Update an existing menu item.
+Request Params:
+itemId: The ID of the menu item.
+Request Body:
+json
+Copy code
+{
+  "name": "string",
+  "price": 18
+}
+Example:
+Request:
+http
+Copy code
+PUT /menu/update-item/123
+Content-Type: application/json
+
+{
+  "name": "Pepperoni",
+  "price": 18
+}
+Response:
+json
+Copy code
+{
+  "message": "Menu item updated successfully",
+  "item": {
+    "name": "Pepperoni",
+    "price": 18
+  }
+}
+Remove Menu Item
+Endpoint: DELETE /menu/remove-item/:itemId
+Description: Remove a menu item.
+Request Params:
+itemId: The ID of the menu item.
+Example:
+Request:
+http
+Copy code
+DELETE /menu/remove-item/123
+Response:
+json
+Copy code
+{
+  "message": "Menu item removed successfully"
+}
+Add Restaurant
+Endpoint: POST /admin/add-restaurant
+Description: Add a new restaurant.
+Request Body:
+json
+Copy code
+{
+  "email": "string",
+  "password": "string",
+  "restaurentname": "string",
+  "name": "string",
+  "price": 20,
+  "online": true
+}
+Example:
+Request:
+http
+Copy code
+POST /admin/add-restaurant
+Content-Type: application/json
+
+{
+  "email": "info@pizzaplace.com",
+  "password": "securepassword",
+  "restaurentname": "Pizza Place",
+  "name": "Pizza Place",
+  "price": 20,
+  "online": true
+}
+Response:
+json
+Copy code
+{
+  "message": "New restaurant created"
+}
+Remove Restaurant
+Endpoint: DELETE /admin/remove-restaurant/:restaurantId
+Description: Remove a restaurant.
+Request Params:
+restaurantId: The ID of the restaurant.
+Example:
+Request:
+http
+Copy code
+DELETE /admin/remove-restaurant/123
+Response:
+json
+Copy code
+{
+  "message": "Restaurant removed successfully"
+}
+
+
+ser Service API Documentation
+1. Place an Order
+Endpoint: POST /user/place-order
+
+Request Body:
+
+json
+Copy code
+{
+  "restaurantId": "12345",
+  "userId": "user123",
+  "name": "John Doe",
+  "items": [
+    {
+      "pizzaName": "Margherita",
+      "quantity": 2
+    },
+    {
+      "pizzaName": "Pepperoni",
+      "quantity": 1
+    }
+  ]
+}
+Response:
+
+json
+Copy code
+{
+  "message": "Order placed successfully",
+  "order": {
+    "restaurantId": "12345",
+    "userId": "user123",
+    "name": "John Doe",
+    "items": [
+      {
+        "pizzaName": "Margherita",
+        "quantity": 2
+      },
+      {
+        "pizzaName": "Pepperoni",
+        "quantity": 1
+      }
+    ],
+    "totalPrice": 30
+  }
+}
+2. Get Order History
+Endpoint: GET /api/users/:userId/order-history
+
+URL Parameter:
+
+userId (string): User ID for whom to retrieve the order history.
+Response:
+
+json
+Copy code
+{
+  "orderHistory": [
+    {
+      "restaurantId": "12345",
+      "userId": "user123",
+      "name": "John Doe",
+      "items": [
+        {
+          "pizzaName": "Margherita",
+          "quantity": 2
+        },
+        {
+          "pizzaName": "Pepperoni",
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 30
+    },
+    // Additional order history items
+  ]
+}
+Error Responses
+404 Not Found:
+
+json
+Copy code
+{
+  "message": "User not found"
+}
+500 Internal Server Error:
+
+json
+Copy code
+{
+  "message": "Internal Server Error"
+}
+Note:
+Replace :userId in the URL with the actual user ID.
+Ensure to implement the calculateTotalPrice function in your code to compute the total order price.

@@ -1,0 +1,161 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Pizza-Delivery-platform",
+    "dateExported": "2023-11-19T19:16:54.626Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "114629b7-a53f-48ae-9904-806db5c5f374",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "http://localhost:8080/restaurants",
+            "url": "http://localhost:8080/restaurants/jalgaon",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-19T18:51:08.898Z",
+            "modified": "2023-11-19T19:15:10.980Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"status\": \"Delivered\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "94994e32-b8b8-4901-b9f6-4f0147ca1988",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "restaurent/menu/addItem",
+            "url": "http://localhost:8080/restaurent/menu/addItem",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-11-19T18:58:36.118Z",
+            "modified": "2023-11-19T18:58:36.118Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"restaurentname\": \"Hello Peter\",\n \n  \"menu\": [\n    {\n      \"name\": \"Pizza Margherita\",\n      \"price\": 10\n    },\n    {\n      \"name\": \"Pasta Carbonara\",\n      \"price\": 15\n    }\n  ]\n\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2e4e6b23-4228-4de3-850b-cd3531e4eb5e",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "update menu item",
+            "url": "http://localhost:8080/menu/update-item/6558666561310f4e4abfe9bb",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-11-19T19:04:13.873Z",
+            "modified": "2023-11-19T19:04:13.873Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"name\": \"Pizza Margherita\",\r\n  \"price\": 12\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "28298b76-5928-4ab9-b032-b9b60f8a092f",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "remove menu item",
+            "url": "http://localhost:8080/menu/remove-item/6558666561310f4e4abfe9bb",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-11-19T19:06:18.968Z",
+            "modified": "2023-11-19T19:06:18.968Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"name\": \"Pizza Margherita\",\r\n  \"price\": 12\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "258db1c0-645a-4dc9-adf9-f7b4949e949f",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "admin register restaurent",
+            "url": "http://localhost:8080/admin/add-restaurant",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-11-19T19:08:29.171Z",
+            "modified": "2023-11-19T19:08:29.171Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"restaurentname\": \"Hello Peter134\",\n  \"email\": \"kalpesh114@example.com\",\n  \"password\": \"securepassword\",\n  \"city\": \"YourCity\",\n  \"menu\": [\n    {\n      \"name\": \"Pizza Margherita\",\n      \"price\": 10\n    },\n    {\n      \"name\": \"Pasta Carbonara\",\n      \"price\": 15\n    }\n  ],\n  \"online\": true\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a051ef38-5153-45dc-be98-53e6faaee12b",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "admin remove restaurent",
+            "url": "http://localhost:8080/admin/remove-restaurant/655747640de75874ed863464",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-11-19T19:09:20.404Z",
+            "modified": "2023-11-19T19:09:20.404Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"name\": \"Pizza Margherita\",\r\n  \"price\": 12\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6ad71959-d692-44b8-9cce-4b4c0f324a86",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "user place-order",
+            "url": "http://localhost:9090/user/place-order",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-11-19T19:13:14.569Z",
+            "modified": "2023-11-19T19:13:14.569Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "\r\n{\r\n  \"restaurantId\": \"655746e71bdde5b493e3c39d\",\r\n  \"userId\": \"65572f1f477a5b7f14932c74\",\r\n  \"name\": \"John Doe\",\r\n  \"items\": [\r\n    {\r\n      \"pizzaName\": \"Pepperoni\",\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"pizzaName\": \"Margherita\",\r\n      \"quantity\": 1\r\n    }\r\n  ]\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f75d950e-481e-4e11-bac6-58d34cfa29e4",
+            "colId": "c4920a8b-80c0-4d4f-82b1-2d4ecf61cecc",
+            "containerId": "",
+            "name": "get order history",
+            "url": "http://localhost:9090/api/users/65572f1f477a5b7f14932c74/order-history",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-11-19T19:14:24.634Z",
+            "modified": "2023-11-19T19:14:24.634Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "\r\n{\r\n  \"restaurantId\": \"655746e71bdde5b493e3c39d\",\r\n  \"userId\": \"65572f1f477a5b7f14932c74\",\r\n  \"name\": \"John Doe\",\r\n  \"items\": [\r\n    {\r\n      \"pizzaName\": \"Pepperoni\",\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"pizzaName\": \"Margherita\",\r\n      \"quantity\": 1\r\n    }\r\n  ]\r\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
